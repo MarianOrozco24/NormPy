@@ -2,12 +2,14 @@ import customtkinter as ctk
 import pandas as pd
 from tkinter import messagebox
 from window.clases.clases import Filtrar, Crear, Destruir_pantalla
+from config import Config
+
+datos_base = Config.info_db
 
 
 def segundo_primera_division():
     try:    
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM segundo_año WHERE curso = 2 and division = 1"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -33,7 +35,6 @@ def segundo_primera_division():
 def segundo_segunda_division():
     try:
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM segundo_año WHERE curso = 2 and division = 2"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -59,7 +60,6 @@ def segundo_segunda_division():
 def segundo_tercera_division():
     try:
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM segundo_año WHERE curso = 2 and division = 3"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -86,7 +86,6 @@ def segundo_cuarta_division():
     try:
         # Variables que almacenana informacion para la conexion con base de datos
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM segundo_año WHERE curso = 2 and division = 4"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -113,7 +112,6 @@ def segundo_quinta_division():
     try:
         # Variables que almacenana informacion para la conexion con base de datos
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM segundo_año WHERE curso = 2 and division = 5"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)

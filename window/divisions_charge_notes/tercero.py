@@ -2,13 +2,12 @@ import customtkinter as ctk
 import customtkinter as ctk
 from tkinter import messagebox
 from window.clases.clases import Filtrar, Crear, Destruir_pantalla
-
-
+from config import Config
+datos_base = Config.info_db
 def tercero_primera_division():
     try:
         # Variables que almacenana informacion para la conexion con base de datos
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM terceraño_educacion WHERE curso = 3 and division = 1"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -33,7 +32,6 @@ def tercero_segunda_division():
     try:
         # Variables que almacenana informacion para la conexion con base de datos
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM terceraño_educacion WHERE curso = 3 and division = 2"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -58,7 +56,6 @@ def tercero_tercera_division():
     try:
         # Variables que almacenana informacion para la conexion con base de datos
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM terceraño_cn WHERE curso = 3 and division = 3"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -82,7 +79,6 @@ def tercero_tercera_division():
 def tercero_cuarta_division():
     try:    # Variables que almacenana informacion para la conexion con base de datos
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM terceraño_cn WHERE curso = 3 and division = 4"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -107,7 +103,6 @@ def tercero_quinta_division():
     # Variables que almacenana informacion para la conexion con base de datos
     try:
         global datos_base, df
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM terceraño_cn WHERE curso = 3 and division = 5"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)

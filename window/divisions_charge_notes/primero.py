@@ -1,16 +1,14 @@
 import customtkinter as ctk
 import customtkinter as ctk
 from tkinter import messagebox
-# from .clases import clases
+from config import Config
 from window.clases.clases import Filtrar, Crear, Destruir_pantalla
-# Filtrar = clases.Filtrar
-# Crear = clases.Crear
-# Destruir_pantalla = clases.Destruir_pantalla
+global datos_base
+datos_base = Config.info_db
 
 def primero_primera ():
     
     global datos_base, df
-    datos_base = ["localhost", "root","1234", "normal1"]
     consulta = """SELECT * FROM primeraño WHERE curso = 1 and division = 1"""
     probando = Filtrar(datos_base)
     df = probando.extraer_datos(consulta)
@@ -37,7 +35,6 @@ def primero_segunda_division():
     # Destruir la ventana anterior
     try:
         global datos_base
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM primeraño WHERE curso = 1 and division = 2"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -64,7 +61,6 @@ def primero_segunda_division():
 def primero_tercera_division():
     try:
         global datos_base
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM primeraño WHERE curso = 1 and division = 3"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -90,7 +86,6 @@ def primero_tercera_division():
 def primero_cuarta_division ():
     try:
         global datos_base
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM primeraño WHERE curso = 1 and division = 4"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
@@ -119,7 +114,6 @@ def primero_cuarta_division ():
 def primero_quinta_division ():
     try:
         global datos_base
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = """SELECT * FROM primeraño WHERE curso = 1 and division = 5"""
         probando = Filtrar(datos_base)
         df = probando.extraer_datos(consulta)
