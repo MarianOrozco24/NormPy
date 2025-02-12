@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import customtkinter as ctk
 from tkinter import messagebox
-from window.divisions.clases.clases import Filtrar, Crear, Destruir_pantalla
+from window.clases.clases import Filtrar, Crear, Destruir_pantalla
 
 def quinto_primera_division():
     # Variables que almacenana informacion para la conexion con base de datos

@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import customtkinter as ctk
 from tkinter import messagebox
-from window.divisions.clases.clases import Filtrar, Crear, Destruir_pantalla
+from window.clases.clases import Filtrar, Crear, Destruir_pantalla
 
 
 def tercero_primera_division():

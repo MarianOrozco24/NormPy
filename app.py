@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from window.charge_notes import charge_notes
+from window.show_debtops import show_debtops
 
 # Creamos la interfaz grafica
 principal_windows = ctk.CTk()
@@ -32,7 +33,7 @@ frame_add_students.pack(pady=15, padx=5)
 # buttons
 charge_notes_button = ctk.CTkButton(frame_charge_notes, text="Cargar Notas", fg_color="#2C2F33", command=charge_notes)
 charge_notes_button.pack(pady=2, padx=2)
-show_debtors_button = ctk.CTkButton(frame_debtors, text="Ver adeudantes", fg_color="#2C2F33")
+show_debtors_button = ctk.CTkButton(frame_debtors, text="Ver adeudantes", fg_color="#2C2F33", command=show_debtops)
 show_debtors_button.pack(pady=2, padx=2)
 delete_students_button = ctk.CTkButton(frame_delete_students, text="Eliminar alumnos", fg_color="#2C2F33")
 delete_students_button.pack(pady=2, padx=2)

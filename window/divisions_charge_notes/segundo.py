@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import pandas as pd
 from tkinter import messagebox
-from window.divisions.clases.clases import Filtrar, Crear, Destruir_pantalla
+from window.clases.clases import Filtrar, Crear, Destruir_pantalla
 
 
 def segundo_primera_division():

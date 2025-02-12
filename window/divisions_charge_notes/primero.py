@@ -2,7 +2,7 @@ import customtkinter as ctk
 import customtkinter as ctk
 from tkinter import messagebox
 # from .clases import clases
-from window.divisions.clases.clases import Filtrar, Crear, Destruir_pantalla
+from window.clases.clases import Filtrar, Crear, Destruir_pantalla
 # Filtrar = clases.Filtrar
 # Crear = clases.Crear
 # Destruir_pantalla = clases.Destruir_pantalla

@@ -1,9 +1,9 @@
 import customtkinter as ctk
-from window.divisions.primero import primero_primera, primero_segunda_division, primero_tercera_division, primero_cuarta_division, primero_quinta_division
-from window.divisions.segundo import segundo_primera_division, segundo_segunda_division, segundo_tercera_division, segundo_cuarta_division, segundo_quinta_division
-from window.divisions.tercero import tercero_primera_division, tercero_segunda_division, tercero_tercera_division, tercero_cuarta_division, tercero_quinta_division
-from window.divisions.cuarto import cuarto_primera_division, cuarto_segunda_division, cuarto_tercera_division, cuarto_cuarta_division, cuarto_quinta_division
-from window.divisions.quinto import quinto_primera_division, quinto_segunda_division, quinto_tercera_division, quinto_cuarta_division, quinto_quinta_division
+from window.divisions_charge_notes.primero import primero_primera, primero_segunda_division, primero_tercera_division, primero_cuarta_division, primero_quinta_division
+from window.divisions_charge_notes.segundo import segundo_primera_division, segundo_segunda_division, segundo_tercera_division, segundo_cuarta_division, segundo_quinta_division
+from window.divisions_charge_notes.tercero import tercero_primera_division, tercero_segunda_division, tercero_tercera_division, tercero_cuarta_division, tercero_quinta_division
+from window.divisions_charge_notes.cuarto import cuarto_primera_division, cuarto_segunda_division, cuarto_tercera_division, cuarto_cuarta_division, cuarto_quinta_division
+from window.divisions_charge_notes.quinto import quinto_primera_division, quinto_segunda_division, quinto_tercera_division, quinto_cuarta_division, quinto_quinta_division
 
 def charge_notes ():
     ## Creamos la ventana de carga de notas
