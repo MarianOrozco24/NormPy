@@ -179,18 +179,18 @@ class Adeudantes:
         df_vacio['Año'] = ''
         df_vacio['Nombre y apellido'] = ''
         df_vacio['Division'] = ''
-        df_vacio['materia0'] = ''
-        df_vacio['materia1'] = ''
-        df_vacio['materia2'] = ''
-        df_vacio['materia3'] = ''
-        df_vacio['materia4'] = ''
-        df_vacio['materia5'] = ''
-        df_vacio['materia6'] = ''
-        df_vacio['materia7'] = ''
-        df_vacio['materia8'] = ''
-        df_vacio['materia9'] = ''
-        df_vacio['materia10'] = ''
-        df_vacio['materia11'] = ''
+        df_vacio['materia 0'] = ''
+        df_vacio['materia 1'] = ''
+        df_vacio['materia 2'] = ''
+        df_vacio['materia 3'] = ''
+        df_vacio['materia 4'] = ''
+        df_vacio['materia 5'] = ''
+        df_vacio['materia 6'] = ''
+        df_vacio['materia 7'] = ''
+        df_vacio['materia 8'] = ''
+        df_vacio['materia 9'] = ''
+        df_vacio['materia 10'] = ''
+        df_vacio['materia 11'] = ''
 
         # Ciclo for que nos permite recorrer el Df_resultado y obtener los valores de las filas
         for c in range(0,len(df_resultado.index)):
@@ -239,7 +239,7 @@ class Adeudantes:
                 df_vacio.loc[df_vacio['Nombre y apellido'] == Nombre, 'Año'] = Año
                 df_vacio.loc[df_vacio['Nombre y apellido'] == Nombre, 'Division'] = division
                 for d in range(len(materias)):
-                    df_vacio.loc[df_vacio['Nombre y apellido'] == Nombre, f'materia{d}'] = materias [d]
+                    df_vacio.loc[df_vacio['Nombre y apellido'] == Nombre, f'materia {d}'] = materias [d]
                 ###################################
                 
                 if contador >=3:
@@ -297,8 +297,8 @@ class VerAdeudantes:
         self.scroll_frame_adeudantes.pack(pady=2, padx=2, fill="x", expand=True)
         self.scroll_frame_recursantes = ctk.CTkScrollableFrame(self.ventana_adeudantes, height=250)
         self.scroll_frame_recursantes.pack(pady=2, padx=2, fill="x", expand=True)
-        frame_volver =ctk.CTkFrame(self.ventana_adeudantes)
-        frame_volver.pack(pady=2, padx=2, fill ="both")
+        self.frame_export =ctk.CTkFrame(self.ventana_adeudantes, fg_color="#6A0DAD")
+        self.frame_export.pack(pady=2, padx=2)
         # Creacion de titulo
         title = ctk.CTkLabel(self.frame_titulo, text= self._titulo_label, font=("Helvetica", 20, "bold"))
         title.pack(pady=5, padx=5)
@@ -318,9 +318,19 @@ class VerAdeudantes:
         self.df_vacio = adeudantes_primer_año.Analisis_datos(df_resultado, self.scroll_frame_adeudantes, self.scroll_frame_recursantes)
         
         # Creamos un boton que nos permita extraer los datos a excel
-    
+        exportar_excel = ctk.CTkButton(self.frame_export, text="Exportar excel",command=lambda:self.exportar_excel(self.df_vacio), fg_color="#2C2F33")
+        exportar_excel.pack(pady=2, padx=2)
         #Ejecutamos la funcion ventana
         self.ventana_adeudantes.mainloop()   
+    
+    def exportar_excel (self, df):
+        ## Le colocamos el titulo de la ventana como nombre
+        nombre_excel = self._titulo_label.replace("|", "-")
+        df.to_excel(f"{Config.ruta_salida_excek_adeudantes}{nombre_excel}.xlsx", engine="openpyxl", index=False)
+        if df.to_excel:
+            messagebox.showinfo("Exportacion completa", f"Se exporto correctamente los datos y se encuentran en:\n {Config.ruta_salida_excek_adeudantes}{nombre_excel}.xlsx")
+
+
     
 def extraer_lista_datos(database, consulta):
     conn = pymysql.connect(host = database[0], user = database[1],password= database[2],database= database[3])

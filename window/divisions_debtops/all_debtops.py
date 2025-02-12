@@ -1,9 +1,9 @@
 from tkinter import messagebox
 from window.clases.clases import VerAdeudantes
-
+from config import Config
+datos_base = Config.info_db
 def ver_adeudantes_primero ():
     try:
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM primeraño'
         adeudantes_primer_año = VerAdeudantes()
         adeudantes_primer_año.set_cargar_titulo_ventana("Primer año")
@@ -14,7 +14,6 @@ def ver_adeudantes_primero ():
     except Exception as vap:
         messagebox.showerror("Error", f"ver_adeudantes_primero | {vap}")
 def ver_adeudantes_segundo():
-    datos_base = ["localhost", "root","1234", "normal1"]
     consulta = 'SELECT * FROM segundo_año'
     adeudantes_segundo_año = VerAdeudantes()
     adeudantes_segundo_año.set_cargar_titulo_ventana("Segundo año")
@@ -25,7 +24,6 @@ def ver_adeudantes_segundo():
    
 def ver_adeudantes_tercero_cn():
     try:
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM terceraño_cn'
         adeudantes_tercer_año = VerAdeudantes()
         adeudantes_tercer_año.set_cargar_titulo_ventana("Tercer año")
@@ -37,7 +35,6 @@ def ver_adeudantes_tercero_cn():
         messagebox.showerror("Error", f"ver_adeudantes_tercero_cn | {vap}")
 def ver_adeudantes_tercero_edu():
     try:
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM terceraño_educacion'
         adeudantes_tercero_edu = VerAdeudantes()
         adeudantes_tercero_edu.set_cargar_titulo_ventana("Tercer año")
@@ -49,7 +46,6 @@ def ver_adeudantes_tercero_edu():
         messagebox.showerror("Error", f"ver_adeudantes_tercero_edu | {vap}")
 def ver_adeudantes_cuarto_cn():
     try:
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM cuartoaño_cn'
         adeudatnes_cuarto_cn = VerAdeudantes()
         adeudatnes_cuarto_cn.set_cargar_titulo_ventana("Cuarto año")
@@ -61,7 +57,6 @@ def ver_adeudantes_cuarto_cn():
         messagebox.showerror("Error", f"ver_adeudantes_cuarto_cn | {vap}")
 def ver_adeudantes_cuarto_edu():
     try:
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM cuartoaño_educacion'
         adeudantes_cuarto_edu = VerAdeudantes()
         adeudantes_cuarto_edu.set_cargar_titulo_ventana("Cuarto año")
@@ -73,7 +68,6 @@ def ver_adeudantes_cuarto_edu():
         messagebox.showerror("Error", f"ver_adeudantes_cuarto_edu | {vap}")
 def ver_adeudantes_quinto_cn():
     try:
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM quintoaño_cn'
         adeudantes_quinto_cn = VerAdeudantes()
         adeudantes_quinto_cn.set_cargar_titulo_ventana("Quinto año")
@@ -85,7 +79,6 @@ def ver_adeudantes_quinto_cn():
         messagebox.showerror("Error", f"ver_adeudantes_quinto_cn | {vap}")
 def ver_adeudantes_quinto_edu():
     try:
-        datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM quintoaño_educacion'
         adeudantes_quinto_edu = VerAdeudantes()
         adeudantes_quinto_edu.set_cargar_titulo_ventana("Quinto año")
