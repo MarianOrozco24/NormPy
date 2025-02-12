@@ -3,11 +3,9 @@ from window.clases.clases import VerAdeudantes
 
 def ver_adeudantes_primero ():
     try:
-        global ventana_adeudantes_por_ano
         datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM primeraño'
         adeudantes_primer_año = VerAdeudantes()
-        adeudantes_primer_año.destruir_anterior(ventana_adeudantes_por_ano)
         adeudantes_primer_año.set_cargar_titulo_ventana("Primer año")
         adeudantes_primer_año.set_cargar_titulo_label("Primer año")
         adeudantes_primer_año.configuracion_ventana()
@@ -16,27 +14,20 @@ def ver_adeudantes_primero ():
     except Exception as vap:
         messagebox.showerror("Error", f"ver_adeudantes_primero | {vap}")
 def ver_adeudantes_segundo():
-    try:
-        global ventana_adeudantes_por_ano
-        datos_base = ["localhost", "root","1234", "normal1"]
-        consulta = 'SELECT * FROM segundo_año'
-        adeudantes_segundo_año = VerAdeudantes()
-        adeudantes_segundo_año.destruir_anterior(ventana_adeudantes_por_ano)
-        adeudantes_segundo_año.set_cargar_titulo_ventana("Segundo año")
-        adeudantes_segundo_año.set_cargar_titulo_label("2do Normal")
-        adeudantes_segundo_año.configuracion_ventana()
-        adeudantes_segundo_año.configuracion_carga_label()
-        adeudantes_segundo_año.mostrar_datos(datos_base, consulta)
-    except Exception as vap:
-        messagebox.showerror("Error", f"ver_adeudantes_segundo | {vap}")
+    datos_base = ["localhost", "root","1234", "normal1"]
+    consulta = 'SELECT * FROM segundo_año'
+    adeudantes_segundo_año = VerAdeudantes()
+    adeudantes_segundo_año.set_cargar_titulo_ventana("Segundo año")
+    adeudantes_segundo_año.set_cargar_titulo_label("2do Normal")
+    adeudantes_segundo_año.configuracion_ventana()
+    adeudantes_segundo_año.configuracion_carga_label()
+    adeudantes_segundo_año.mostrar_datos(datos_base, consulta)
+   
 def ver_adeudantes_tercero_cn():
     try:
-        global ventana_adeudantes_por_ano, adeudantes_divisiones
         datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM terceraño_cn'
         adeudantes_tercer_año = VerAdeudantes()
-        adeudantes_tercer_año.destruir_anterior(ventana_adeudantes_por_ano)
-        adeudantes_tercer_año.destruir_anterior(adeudantes_divisiones)
         adeudantes_tercer_año.set_cargar_titulo_ventana("Tercer año")
         adeudantes_tercer_año.set_cargar_titulo_label("Tercer año | Ciencias Naturales")
         adeudantes_tercer_año.configuracion_ventana()
@@ -46,12 +37,9 @@ def ver_adeudantes_tercero_cn():
         messagebox.showerror("Error", f"ver_adeudantes_tercero_cn | {vap}")
 def ver_adeudantes_tercero_edu():
     try:
-        global ventana_adeudantes_por_ano, adeudantes_divisiones
         datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM terceraño_educacion'
         adeudantes_tercero_edu = VerAdeudantes()
-        adeudantes_tercero_edu.destruir_anterior(ventana_adeudantes_por_ano)
-        adeudantes_tercero_edu.destruir_anterior(adeudantes_divisiones)
         adeudantes_tercero_edu.set_cargar_titulo_ventana("Tercer año")
         adeudantes_tercero_edu.set_cargar_titulo_label("Tercer año | Educacion")
         adeudantes_tercero_edu.configuracion_ventana()
@@ -61,12 +49,9 @@ def ver_adeudantes_tercero_edu():
         messagebox.showerror("Error", f"ver_adeudantes_tercero_edu | {vap}")
 def ver_adeudantes_cuarto_cn():
     try:
-        global ventana_adeudantes_por_ano, adeudantes_divisiones
         datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM cuartoaño_cn'
         adeudatnes_cuarto_cn = VerAdeudantes()
-        adeudatnes_cuarto_cn.destruir_anterior(ventana_adeudantes_por_ano)
-        adeudatnes_cuarto_cn.destruir_anterior(adeudantes_divisiones)
         adeudatnes_cuarto_cn.set_cargar_titulo_ventana("Cuarto año")
         adeudatnes_cuarto_cn.set_cargar_titulo_label("Cuarto año | Ciencias Naturales")
         adeudatnes_cuarto_cn.configuracion_ventana()
@@ -76,12 +61,9 @@ def ver_adeudantes_cuarto_cn():
         messagebox.showerror("Error", f"ver_adeudantes_cuarto_cn | {vap}")
 def ver_adeudantes_cuarto_edu():
     try:
-        global ventana_adeudantes_por_ano, adeudantes_divisiones
         datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM cuartoaño_educacion'
         adeudantes_cuarto_edu = VerAdeudantes()
-        adeudantes_cuarto_edu.destruir_anterior(ventana_adeudantes_por_ano)
-        adeudantes_cuarto_edu.destruir_anterior(adeudantes_divisiones)
         adeudantes_cuarto_edu.set_cargar_titulo_ventana("Cuarto año")
         adeudantes_cuarto_edu.set_cargar_titulo_label("Cuarto año | Educacion")
         adeudantes_cuarto_edu.configuracion_ventana()
@@ -91,12 +73,9 @@ def ver_adeudantes_cuarto_edu():
         messagebox.showerror("Error", f"ver_adeudantes_cuarto_edu | {vap}")
 def ver_adeudantes_quinto_cn():
     try:
-        global ventana_adeudantes_por_ano, adeudantes_divisiones
         datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM quintoaño_cn'
         adeudantes_quinto_cn = VerAdeudantes()
-        adeudantes_quinto_cn.destruir_anterior(ventana_adeudantes_por_ano)
-        adeudantes_quinto_cn.destruir_anterior(adeudantes_divisiones)
         adeudantes_quinto_cn.set_cargar_titulo_ventana("Quinto año")
         adeudantes_quinto_cn.set_cargar_titulo_label("Quinto año | Ciencias Naturales")
         adeudantes_quinto_cn.configuracion_ventana()
@@ -106,12 +85,9 @@ def ver_adeudantes_quinto_cn():
         messagebox.showerror("Error", f"ver_adeudantes_quinto_cn | {vap}")
 def ver_adeudantes_quinto_edu():
     try:
-        global ventana_adeudantes_por_ano, adeudantes_divisiones
         datos_base = ["localhost", "root","1234", "normal1"]
         consulta = 'SELECT * FROM quintoaño_educacion'
         adeudantes_quinto_edu = VerAdeudantes()
-        adeudantes_quinto_edu.destruir_anterior(ventana_adeudantes_por_ano)
-        adeudantes_quinto_edu.destruir_anterior(adeudantes_divisiones)
         adeudantes_quinto_edu.set_cargar_titulo_ventana("Quinto año")
         adeudantes_quinto_edu.set_cargar_titulo_label("Quinto año | Educacion")
         adeudantes_quinto_edu.configuracion_ventana()

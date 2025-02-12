@@ -3,12 +3,12 @@ from window.divisions_debtops.all_debtops import ver_adeudantes_primero, ver_ade
 def option_selected_year(option):
     print(f"Has seleccionado el curso {option}")
     global año
-    año = option
+    año = int(option)
 
 def option_selected_div(option):
     print(f"Has seleccionado la division {option}")
     global div
-    div = option
+    div = int(option)
 
 def show_debtops ():
     # Creacion de ventana
@@ -56,21 +56,30 @@ def show_debtops ():
 
 def debtops_conditional (año, div):
     if año == 1:
+        print("Se esta ejecutando primer año")
         ver_adeudantes_primero()
     elif año == 2:
+        print("Se esta ejecutando segundo año")
         ver_adeudantes_segundo()
     elif año == 3:
         if div == 1 or div == 2:
+            print("Se esta ejecutando tercer año educacion")
             ver_adeudantes_tercero_edu()
         else:
+            print("Se esta ejecutando tercer  año cn")
             ver_adeudantes_tercero_cn()
+
     elif año == 4:
         if div == 1 or div == 2:
+            print("Se esta ejecutando cuarto año educacion")
             ver_adeudantes_cuarto_edu()
         else:
+            print("Se esta ejecutando cuarto año cn")
             ver_adeudantes_cuarto_cn()
     else:
         if div == 1 or div == 2:
+            print("Se esta ejecutando quinto año educacion")
             ver_adeudantes_quinto_edu()
         else:
-            ver_adeudantes_quinto_cn
+            print("Se esta ejecutando quinto año cn")
+            ver_adeudantes_quinto_cn()

@@ -141,7 +141,7 @@ class Adeudantes:
             self.cursor.execute(self.consulta)
             Resultado_adeudantes = self.cursor.fetchone()
         except Exception as DEA:
-            messagebox.showerror("Exception",f"Exception DEA: {DEA}")
+            messagebox.showerror("Exception",f"Exception DEA: {DEA} \n {self.consulta}")
         finally:
             if self.cursor is not None:
                 self.cursor.close()
@@ -154,7 +154,6 @@ class Adeudantes:
             self.conn = pymysql.connect(host=self.datos_base[0], user=self.datos_base[1], password=self.datos_base[2], database=self.datos_base[3])
             self.cursor = self.conn.cursor()
             Resultado = pd.read_sql_query(self.consulta, self.conn)             
-            # Extraemos el resultado de la consulta 
             
         except Exception as DE:
 
@@ -168,12 +167,7 @@ class Adeudantes:
             if self.conn is not None:
                 self.conn.close()
                 return Resultado
-    def Analisis_datos(self,df_resultado, scroll_frame_recursantes, scroll_frame_adeudantes ):
-        global VentanaPrincipal
-        # Cerramos la ventana principal
-        if VentanaPrincipal is not None:
-            VentanaPrincipal.destroy()
-            VentanaPrincipal = None
+    def Analisis_datos(self, df_resultado, scroll_frame_recursantes, scroll_frame_adeudantes ):
         # Creamos la variable cantidad_col para manipular con mayor facildad el num de columnas
         cantidad_col = len(df_resultado.columns) - 1
 
@@ -212,7 +206,10 @@ class Adeudantes:
                 if  datos2 >= 1 and datos2 < 7:
                     contador = contador + 1
                     obtener_id = datos[cantidad_col]
-                    materias.append(df_resultado.columns[i])
+                    materia = df_resultado.columns[i].replace("_", " ")
+                    materia = materia.replace("'", "")
+                    materia = materia.capitalize()
+                    materias.append(materia)
 
                     
                     
@@ -223,8 +220,8 @@ class Adeudantes:
 
                 # Obtenemos los datos del alumno basandonos en el id que obtuvimos anteiormente
                 consulta = f'SELECT nombre_completo FROM alumnos WHERE id_alumnos = {obtener_id}'
-                consulta_año = f'SELECT año_en_curso FROM primeraño WHERE id_alumnos = {obtener_id}'
-                consulta_division = f'SELECT division FROM primeraño WHERE id_alumnos = {obtener_id}'
+                consulta_año = f'SELECT ano_curso FROM alumnos WHERE id_alumnos = {obtener_id}'
+                consulta_division = f'SELECT division FROM alumnos WHERE id_alumnos = {obtener_id}'
                 extraer_nombre = Adeudantes(self.datos_base, consulta)
                 Nombre_extraido = extraer_nombre.DataExtract_adeudantes() 
                 extraer_año_curso = Adeudantes(self.datos_base, consulta_año)
@@ -234,6 +231,8 @@ class Adeudantes:
                 division = division_extraida[0]
                 Año = año_extraido[0]
                 Nombre = Nombre_extraido[0]
+                ### Acomodamos la cadena de materias
+                materias_str = ", ".join([m for m in materias])
                 ##########################
                 # Cargamos los datos al df
                 df_vacio.loc[contador_nombres_condicional, 'Nombre y apellido'] = Nombre
@@ -244,22 +243,24 @@ class Adeudantes:
                 ###################################
                 
                 if contador >=3:
-                    label= ctk.CTkLabel(scroll_frame_recursantes, text =f"{Año} | {Nombre} Adeuda: {contador} materias ---> {materias}", anchor = "w", font=("Helvetica", 14))
+                    label= ctk.CTkLabel(scroll_frame_recursantes, text =f"> {Año} | {Nombre} Adeuda: {contador} materias | {materias_str}", anchor = "w", font=("Helvetica", 14))
                     label.pack(pady=5, padx=5, fill = "both")
                 else:
-                    label = ctk.CTkLabel(scroll_frame_adeudantes, text =f"{Año} | {Nombre} adeuda: {contador} materias ---> {materias}", anchor="w", font=("Helvetica", 14))
+                
+                    label = ctk.CTkLabel(scroll_frame_adeudantes, text =f"> {Año} | {Nombre} Adeuda: {contador} materias | {materias_str}", anchor="w", font=("Helvetica", 14))
                     label.pack(pady=5, padx=5, fill="both")
                 
-            else:
-                continue
+        
+
+        
+        
             
       
         
         return df_vacio
+    
 class VerAdeudantes:
     def __init__(self):
-        # Cerramos las ventana anteriores
-
 
         # Inicializamos las variables necesarias
         self._titulo_label = None
@@ -285,17 +286,17 @@ class VerAdeudantes:
     def configuracion_ventana(self):
         self.ventana_adeudantes = ctk.CTk()
         self.ventana_adeudantes.title(self._titulo_ventana)
-        self.ventana_adeudantes.geometry("600x600")
+        self.ventana_adeudantes.geometry("1250x650")
 
     # Se crean los labels
     def configuracion_carga_label (self):
         # Creacion de frames para alojar datos
         self.frame_titulo = ctk.CTkFrame(self.ventana_adeudantes)
         self.frame_titulo.pack(pady=5,padx=5, fill="both")
-        self. scroll_frame_adeudantes =  ctk.CTkScrollableFrame(self.ventana_adeudantes)
-        self.scroll_frame_adeudantes.pack(pady=2, padx=2, fill="both", expand=True)
-        self.scroll_frame_recursantes = ctk.CTkScrollableFrame(self.ventana_adeudantes)
-        self.scroll_frame_recursantes.pack(pady=2, padx=2, fill="both", expand=True)
+        self. scroll_frame_adeudantes =  ctk.CTkScrollableFrame(self.ventana_adeudantes, height=250)
+        self.scroll_frame_adeudantes.pack(pady=2, padx=2, fill="x", expand=True)
+        self.scroll_frame_recursantes = ctk.CTkScrollableFrame(self.ventana_adeudantes, height=250)
+        self.scroll_frame_recursantes.pack(pady=2, padx=2, fill="x", expand=True)
         frame_volver =ctk.CTkFrame(self.ventana_adeudantes)
         frame_volver.pack(pady=2, padx=2, fill ="both")
         # Creacion de titulo
@@ -316,6 +317,8 @@ class VerAdeudantes:
         df_resultado = adeudantes_primer_año.DataExtract_database()
         self.df_vacio = adeudantes_primer_año.Analisis_datos(df_resultado, self.scroll_frame_adeudantes, self.scroll_frame_recursantes)
         
+        # Creamos un boton que nos permita extraer los datos a excel
+    
         #Ejecutamos la funcion ventana
         self.ventana_adeudantes.mainloop()   
     
