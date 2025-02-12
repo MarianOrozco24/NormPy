@@ -45,7 +45,7 @@ class Filtrar:
             self.conn.commit()
         except Exception as exc:
             print(f"Ocurrio un error al guardar los cambios {exc}")
-            messagebox.showerror("Conexion base de datos", f"Error en la conexion a base de datos\n {exc}")
+            messagebox.showerror("Conexion base de datos", f"Error al guardar los datos\n {exc}")
             exit(1)
         finally:
             self.conn.close()
