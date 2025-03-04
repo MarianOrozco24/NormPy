@@ -233,6 +233,8 @@ class Adeudantes:
                 division = division_extraida[0]
                 Año = año_extraido[0]
                 Nombre = Nombre_extraido[0]
+                '''Acomodamos el nombre del alumnos para una visualizacion mas sencilla '''
+                Nombre = Nombre.title()
                 ### Acomodamos la cadena de materias
                 materias_str = ", ".join([m for m in materias])
                 ##########################
@@ -245,11 +247,11 @@ class Adeudantes:
                 ###################################
                 
                 if contador >=3:
-                    label= ctk.CTkLabel(scroll_frame_recursantes, text =f"> {Año} | {Nombre} Adeuda: {contador} materias | {materias_str}", anchor = "w", font=("Helvetica", 14))
+                    label= ctk.CTkLabel(scroll_frame_recursantes, text =f"> {Año} | {Nombre.title()} Adeuda: {contador} Materias | {materias_str}", anchor = "w", font=("Helvetica", 14))
                     label.pack(pady=5, padx=5, fill = "both")
                 else:
                 
-                    label = ctk.CTkLabel(scroll_frame_adeudantes, text =f"> {Año} | {Nombre} Adeuda: {contador} materias | {materias_str}", anchor="w", font=("Helvetica", 14))
+                    label = ctk.CTkLabel(scroll_frame_adeudantes, text =f"> {Año} | {Nombre.title()} Adeuda: {contador} Materias | {materias_str}", anchor="w", font=("Helvetica", 14))
                     label.pack(pady=5, padx=5, fill="both")
                 
         
@@ -306,9 +308,9 @@ class VerAdeudantes:
         title.pack(pady=5, padx=5)
 
         # Creacion de subtitulos 
-        subtitle = ctk.CTkLabel(self.scroll_frame_adeudantes, text="Adeudantes", font=("Helvetica", 15,"bold"))
+        subtitle = ctk.CTkLabel(self.scroll_frame_adeudantes, text="Recursantes", font=("Helvetica", 15,"bold"))
         subtitle.pack(pady=5, padx=5)
-        subtitle = ctk.CTkLabel(self.scroll_frame_recursantes, text= "Recursantes", font=("Helvetica", 15, "bold"))
+        subtitle = ctk.CTkLabel(self.scroll_frame_recursantes, text= "Adeudantes", font=("Helvetica", 15, "bold"))
         subtitle.pack(pady=5, padx=5) 
 
         
