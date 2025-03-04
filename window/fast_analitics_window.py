@@ -122,13 +122,14 @@ def fuction_scraping_window():
 
 
 
-def cuenta_regresiva(root, label, i=5, callback=None):
+def cuenta_regresiva(root, label_texto, label_numerico, i=5, callback=None):
     if i > 0:
-        label.configure(text=f"{i}")
-        root.after(1000, cuenta_regresiva, root, label, i-1, callback)  # Llamar a la función cada segundo
+        label_numerico.configure(text=f"\n\n{i}")
+        root.after(1000, cuenta_regresiva, root, label_texto,label_numerico, i-1, callback)  # Llamar a la función cada segundo
     else:
-        label.configure(text="¡Iniciando automatización!\n¡Suelte los periféricos!")
-        root.after(2000, lambda: cerrar_ventana_y_ejecutar(root, callback))  # Esperar 2 segundos antes de cerrar
+        label_texto.destroy()
+        label_numerico.configure(text="\n\n¡Iniciando automatización!\n¡Suelte los periféricos!", font=("Helvetica", 32))
+        root.after(5000, lambda: cerrar_ventana_y_ejecutar(root, callback))  # Esperar 5 segundos antes de cerrar
 
 def cerrar_ventana_y_ejecutar(root, callback):
     root.destroy()  # Cerrar la ventana
@@ -142,14 +143,13 @@ def main(year=None, div=None, switch_var=None):
     warning_window.geometry("750x450")
 
     # Creamos el label con el mensaje de cuenta regresiva
-    label_cuenta_regresiva = ctk.CTkLabel(warning_window, text="La automatización comenzará en: ", font=("Helvetica", 32))
+    label_cuenta_regresiva = ctk.CTkLabel(warning_window, text="\n\nLa automatización comenzará en: ", font=("Helvetica", 32))
     label_cuenta_regresiva.pack(pady=5, padx=5)
-    
-    label_numerico = ctk.CTkLabel(warning_window, text="5", font=("Helvetica", 48))
+    label_numerico = ctk.CTkLabel(warning_window, text="\n\n5", font=("Helvetica", 48))
     label_numerico.pack(pady=5, padx=5)
 
     # Iniciar la cuenta regresiva con una función callback que se ejecuta al finalizar
-    cuenta_regresiva(warning_window, label_numerico, 5, lambda: iniciar_proceso(year, div, switch_var))
+    cuenta_regresiva(warning_window, label_cuenta_regresiva, label_numerico, 5, lambda: iniciar_proceso(year, div, switch_var))
 
     # Ejecutar la ventana
     warning_window.mainloop()
