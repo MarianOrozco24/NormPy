@@ -1,10 +1,10 @@
 import customtkinter as ctk
 import pandas as pd
 from tkinter import messagebox as mx
-from fast_analitics.scraping import descarga_info, scrapeo
-from fast_analitics.data_transformation import limpiar_df, analisis_df
+from quick_analysis.scraping import descarga_info, scrapeo
+from quick_analysis.data_transformation import limpiar_df, analisis_df
 from config import Config
-from fast_analitics.transformation import progress, buscar_archivos
+from quick_analysis.transformation import progress, buscar_archivos
 from docx import Document
 import os
 import time
