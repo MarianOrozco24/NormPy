@@ -87,6 +87,8 @@ class Crear:
 
         # Crear encabezados
         for col, header in enumerate(encabezados):
+            header = header.replace("_", " ")
+            header = header.title()
             encabezados_label = ctk.CTkLabel(self.canvas_frame, text=header, font=("Arial", 14))
             encabezados_label.grid(row=0, column=col, pady=2, padx=5, sticky="nsew")
 
