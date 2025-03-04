@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from window.charge_notes import charge_notes
 from window.show_debtops import show_debtops
-from window.fast_analitics_window import fuction_scraping_window
+from window.quick_analysis_window import fuction_scraping_window
 
 # Creamos la interfaz grafica
 principal_windows = ctk.CTk()

@@ -45,6 +45,14 @@ def analisis_df (df):
         # Creamos un df_vacio
         df_adeudantes_x_año = pd.DataFrame(columns=materias_df)
         contador_adeudantes = 0
+
+        ''' Condicionammos segun el mes en el que estamos asi no tenemos problemas con el id de las columnas. (df.columns - 1) '''
+        # Cantidad de columnas dependiendo el mes
+        if Config.mes >= 2 and Config.mes <= 4:
+            cantidad_columnas = len(df.columns)
+        else:
+            cantidad_columnas = len(df.columns) - 1
+            
         # Recorremos las filas del df
         for index in df.index:
 
@@ -54,7 +62,7 @@ def analisis_df (df):
                 # Creamos una cadena vacia para almacenar las variables de cada alumno
                 materias_x_alumno = []
                 # Recorremos las columnas del df
-                for index_columns in range(1, len(df.columns) - 1):
+                for index_columns in range(1, cantidad_columnas):
                     
                     # condicionamos las notas de cada alumno
                     if df.iloc[index, index_columns] < 7 or pd.isna(df.iloc[index, index_columns]):
