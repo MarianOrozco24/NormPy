@@ -50,7 +50,7 @@ def descarga_info(driver, año, div):
     time.sleep(tiempoEntrePasos)
     driver.back()
 
-def scrapeo ():
+def scrapeo (year=None, div=None, switch_var=0):
 
     # Ruta del EdgeDriver (si no está en el PATH, debes especificarlo)
     edge_driver_path = "C:/msedgedriver.exe"  # Cambia esto
@@ -87,13 +87,18 @@ def scrapeo ():
     button_ingresar.click()
 
     time.sleep(1)
-    año = [1,2,3,4,5]
-    division = [1,2,3,4,5]
+    # En caso de que la varible del switch sea 1 entonces scrapeamos todos los años
+    if switch_var == 0:
+        año = [1,2,3,4,5]
+        division = [1,2,3,4,5]
 
-    for a in año:
-        for div in division:
-            descarga_info(driver, a, div)
-            time.sleep(2)
+        for a in año:
+            for div in division:
+                descarga_info(driver, a, div)
+                time.sleep(2)
+    else:
+        # SIno scrapeamos solamente el año indicado por el usuario
+        descarga_info(driver,year, div)
 
 
 

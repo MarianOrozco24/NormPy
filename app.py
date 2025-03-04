@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from window.charge_notes import charge_notes
 from window.show_debtops import show_debtops
+from window.fast_analitics_window import fuction_scraping_window
 
 # Creamos la interfaz grafica
 principal_windows = ctk.CTk()
@@ -41,7 +42,7 @@ delete_students_button = ctk.CTkButton(frame_delete_students, text="Eliminar alu
 delete_students_button.pack(pady=2, padx=2)
 add_students_button = ctk.CTkButton(frame_add_students, text="Agregar alumnos", fg_color="#2C2F33")
 add_students_button.pack(pady=2, padx=2)
-fast_analitics_buttom = ctk.CTkButton(frame_fast_analitics, text="Analisis rapido", fg_color="#2C2F33")
+fast_analitics_buttom = ctk.CTkButton(frame_fast_analitics, text="Analisis rapido", fg_color="#2C2F33", command=fuction_scraping_window)
 fast_analitics_buttom.pack(pady=2, padx=2)
 
 
@@ -50,4 +51,3 @@ principal_windows.mainloop()
 
 
 
-# Realizar scrapeo de informacion para descargar los archivos de forma automatica
